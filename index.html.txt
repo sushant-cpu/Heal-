@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEAL - Holistic Emotional Assistance & Liberation</title>
+  <style>
+    :root {
+      --primary: #42a5b3;
+      --primary-light: #7fd1dc;
+      --secondary: #6b69c9;
+      --accent: #70d3a6;
+      --light: #f5fafa;
+      --dark: #263238;
+      --gray: #e1e5e7;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+    
+    nav ul li {
+      margin-left: 25px;
+    }
+    
+    nav ul li a {
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background-color: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .btn-secondary {
+      background-color: var(--secondary);
+    }
+    
+    .btn-secondary:hover {
+      background-color: #5654b0;
+    }
+    
+    .hero {
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--secondary) 100%);
+      color: white;
+      padding: 80px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    
+    .features {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: #666;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .feature-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      text-align: center;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .feature-icon {
+      background-color: var(--primary-light);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      color: white;
+      font-size: 26px;
+    }
+    
+    .feature-card h3 {
+      margin-bottom: 15px;
+      color: var(--primary);
+    }
+    
+    .how-it-works {
+      padding: 80px 0;
+      background-color: var(--light);
+    }
+    
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .step-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .step-number {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--secondary);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    .testimonials {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .testimonial-card {
+      background-color: var(--light);
+      border-radius: 10px;
+      padding: 30px;
+      position: relative;
+    }
+    
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 15px;
+      background-color: var(--gray);
+    }
+    
+    .author-details {
+      line-height: 1.3;
+    }
+    
+    .author-name {
+      font-weight: 600;
+    }
+    
+    .author-title {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    
+    .stats {
+      padding: 60px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+    }
+    
+    .booking-section {
+      padding: 80px 0;
+      background-color: var(--light);
+    }
+    
+    .calendar-wrapper {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      padding: 30px;
+    }
+    
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+    
+    .calendar-day {
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+    }
+    
+    .calendar-date {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .calendar-date:hover {
+      background-color: var(--gray);
+    }
+    
+    .calendar-date.active {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .time-slots {
+      margin-top: 30px;
+    }
+    
+    .time-slots h3 {
+      margin-bottom: 15px;
+    }
+    
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+    }
+    
+    .time-slot {
+      padding: 10px;
+      background-color: var(--gray);
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .time-slot:hover {
+      background-color: var(--primary-light);
+      color: white;
+    }
+    
+    .time-slot.active {
+      background-color: var(--primary);
+      color: white;
+    }
+    
+    .clock {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: white;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      margin: 0 auto 30px;
+      position: relative;
+    }
+    
+    .clock-face {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: var(--light);
+      position: relative;
+    }
+    
+    .clock-hand {
+      position: absolute;
+      background-color: var(--primary);
+      transform-origin: bottom center;
+      border-radius: 10px;
+    }
+    
+    .hour-hand {
+      width: 4px;
+      height: 30px;
+      top: 20px;
+      left: calc(50% - 2px);
+      transform: rotate(315deg);
+    }
+    
+    .minute-hand {
+      width: 3px;
+      height: 40px;
+      top: 10px;
+      left: calc(50% - 1.5px);
+      transform: rotate(90deg);
+      background-color: var(--secondary);
+    }
+    
+    .about {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    
+    .about-content h2 {
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    
+    .about-image {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .team {
+      padding: 80px 0;
+      background-color: var(--light);
+    }
+    
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    
+    .team-member {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+    }
+    
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .member-image {
+      height: 250px;
+      background-color: var(--gray);
+    }
+    
+    .member-info {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .member-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .member-role {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+    
+    .cta-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      text-align: center;
+    }
+    
+    .cta-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .cta-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    
+    .cta-content p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    footer {
+      background-color: #263238;
+      color: white;
+      padding: 60px 0 30px;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+    
+    .footer-col h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+    
+    .social-icon:hover {
+      background-color: var(--primary);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+    
+    .faq {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .accordion {
+      margin-top: 50px;
+    }
+    
+    .accordion-item {
+      margin-bottom: 15px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .accordion-header {
+      background-color: var(--light);
+      padding: 15px 20px;
+      cursor: pointer;
+      font-weight: 500;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .accordion-content {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+      background-color: white;
+    }
+    
+    .accordion-content-inner {
+      padding: 20px 0;
+    }
+    
+    .accordion-item.active .accordion-content {
+      max-height: 300px;
+    }
+    
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .mobile-menu {
+        display: block;
+      }
+      
+      .desktop-menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav-container">
+      <div class="logo">
+        <img src="Heal.jpg" alt="HEAL Logo" />
+        <span>HEAL</span>
+      </div>
+      <nav class="desktop-menu">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#how-it-works">How It Works</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="cta-buttons">
+        <a href="#login" class="btn btn-outline">Log In</a>
+        <a href="#signup" class="btn">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Revolutionizing Mental Health: AI-Driven Therapy & Psychologist Empowerment</h1>
+        <p>HEAL bridges the gap between psychologists and patients, solving psychologist unemployment while providing accessible therapy services.</p>
+        <div class="cta-buttons">
+          <a href="#find-therapist" class="btn btn-secondary">Find a Therapist</a>
+          <a href="#join-psychologist" class="btn">Join as a Psychologist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why Choose HEAL?</h2>
+        <p>Our platform offers unique features designed to make mental health care more accessible, affordable, and effective.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">AI</div>
+          <h3>AI-Powered Matching</h3>
+          <p>Our intelligent algorithm matches you with the perfect therapist based on your needs, preferences, and goals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Discord-like Community</h3>
+          <p>Connect with peers and professionals in our supportive, moderated community space.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⭐</div>
+          <h3>Rating & Review System</h3>
+          <p>Transparent reviews help new therapists build credibility and clients make informed choices.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>Secure & Confidential</h3>
+          <p>End-to-end encryption ensures your therapy sessions and personal information remain private.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <div class="section-title">
+        <h2>How HEAL Works</h2>
+        <p>Our streamlined process makes it easy to get started with therapy or build your practice.</p>
+      </div>
+      <div class="steps">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Sign Up</h3>
+          <p>Create your account as a patient or psychologist in just a few minutes.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>AI Assessment</h3>
+          <p>Take our AI-powered assessment to help us understand your needs or expertise.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Get Matched</h3>
+          <p>Receive personalized therapist recommendations or client matches.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Start Sessions</h3>
+          <p>Book appointments and connect through our secure platform.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="booking" class="booking-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Book Your Appointment</h2>
+        <p>Find the perfect time slot that works for you and your therapist.</p>
+      </div>
+      <div class="clock">
+        <div class="clock-face">
+          <div class="clock-hand hour-hand"></div>
+          <div class="clock-hand minute-hand"></div>
+        </div>
+      </div>
+      <div class="calendar-wrapper">
+        <div class="calendar-header">
+          <button class="btn btn-outline">Previous</button>
+          <h3>March 2025</h3>
+          <button class="btn btn-outline">Next</button>
+        </div>
+        <div class="calendar-grid">
+          <div class="calendar-day">Sun</div>
+          <div class="calendar-day">Mon</div>
+          <div class="calendar-day">Tue</div>
+          <div class="calendar-day">Wed</div>
+          <div class="calendar-day">Thu</div>
+          <div class="calendar-day">Fri</div>
+          <div class="calendar-day">Sat</div>
+          
+          <div class="calendar-date">1</div>
+          <div class="calendar-date">2</div>
+          <div class="calendar-date">3</div>
+          <div class="calendar-date">4</div>
+          <div class="calendar-date">5</div>
+          <div class="calendar-date">6</div>
+          <div class="calendar-date">7</div>
+          <div class="calendar-date">8</div>
+          <div class="calendar-date">9</div>
+          <div class="calendar-date">10</div>
+          <div class="calendar-date">11</div>
+          <div class="calendar-date">12</div>
+          <div class="calendar-date">13</div>
+          <div class="calendar-date">14</div>
+          <div class="calendar-date active">15</div>
+          <div class="calendar-date">16</div>
+          <div class="calendar-date">17</div>
+          <div class="calendar-date">18</div>
+          <div class="calendar-date">19</div>
+          <div class="calendar-date">20</div>
+          <div class="calendar-date">21</div>
+          <div class="calendar-date">22</div>
+          <div class="calendar-date">23</div>
+          <div class="calendar-date">24</div>
+          <div class="calendar-date">25</div>
+          <div class="calendar-date">26</div>
+          <div class="calendar-date">27</div>
+          <div class="calendar-date">28</div>
+          <div class="calendar-date">29</div>
+          <div class="calendar-date">30</div>
+          <div class="calendar-date">31</div>
+        </div>
+        <div class="time-slots">
+          <h3>Available Time Slots for March 15</h3>
+          <div class="slots-grid">
+            <div class="time-slot">9:00 AM</div>
+            <div class="time-slot">10:00 AM</div>
+            <div class="time-slot active">11:00 AM</div>
+            <div class="time-slot">1:00 PM</div>
+            <div class="time-slot">2:00 PM</div>
+            <div class="time-slot">3:00 PM</div>
+            <div class="time-slot">4:00 PM</div>
+            <div class="time-slot">5:00 PM</div>
+          </div>
+          <div style="text-align: center; margin-top: 30px;">
+            <a href="#confirm-booking" class="btn">Confirm Booking</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>What Our Users Say</h2>
+        <p>Read about the experiences of patients and therapists who have used HEAL.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "HEAL has transformed my therapy practice. I went from struggling to find clients to having a full schedule within weeks. The AI matching really works!"
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="author-details">
+              <div class="author-name">Dr. Sarah Johnson</div>
+              <div class="author-title">Clinical Psychologist</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "Finding the right therapist used to be overwhelming. HEAL matched me with someone who perfectly understood my anxiety issues on the first try."
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="author-details">
+              <div class="author-name">Michael T.</div>
+              <div class="author-title">Patient</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-text">
+            "The community aspect of HEAL makes a huge difference. Even between sessions, I feel supported and understood."
+          </div>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="author-details">
+              <div class="author-name">Elena Patel</div>
+              <div class="author-title">Patient</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stats" class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">5,000+</div>
+          <div class="stat-label">Active Therapists</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50,000+</div>
+          <div class="stat-label">Patients Helped</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">250,000+</div>
+          <div class="stat-label">Sessions Completed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2>About HEAL</h2>
+          <p>HEAL was founded in 2023 with a dual mission: to make quality mental health care accessible to everyone and to create meaningful employment opportunities for psychologists.</p>
+          <p>Our platform uses advanced AI to match patients with the most suitable therapists, ensuring effective therapy outcomes while helping psychologists build thriving practices.</p>
+          <p>Beyond individual therapy, we're building a supportive community where both patients and professionals can connect, share resources, and grow together.</p>
+          <div style="margin-top: 30px;">
+            <a href="#learn-more" class="btn">Learn More About Us</a>
+          </div>
+        </div>
+        <div class="about-image">
+          <img src="/api/placeholder/500/400" alt="Team collaboration" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Comprehensive mental health solutions for patients and psychologists</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>AI-Assisted Therapist Matching</h3>
+          <p>Our algorithm analyzes your needs and preferences to recommend the perfect therapist for you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💻</div>
+          <h3>Online Therapy Sessions</h3>
+          <p>Secure video and audio consultations from the comfort of your home at affordable rates.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Therapist Community</h3>
+          <p>A professional network where psychologists can find clients, collaborate, and enhance their skills.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📚</div>
+          <h3>Mental Health Resources</h3>
+          <p>Access blogs, self-help tools, and AI-driven assessments to support your mental wellness journey.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" class="team">
+    <div class="container">
+      <div class="section-title">
+        <h2>Meet Our Team</h2>
+        <p>The passionate individuals behind HEAL's mission</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image">
+            <img src="/api/placeholder/250/250" alt="Team member" />
+          </div>
+          <div class="member-info">
+            <div class="member-name">Dr. Emily Chen</div>
+            <div class="member-role">Founder & CEO</div>
+            <p>Clinical psychologist with 15+ years of experience and a passion for making mental healthcare accessible.</p>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="/api/placeholder/250/250" alt="Team member" />
+          </div>
+          <div class="member-info">
+            <div class="member-name">Michael Rodriguez</div>
+            <div class="member-role">CTO</div>
+            <p>AI specialist with expertise in developing ethical algorithms for healthcare applications.</p>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="/api/placeholder/250/250" alt="Team member" />
+          </div>
+          <div class="member-info">
+            <div class="member-name">Dr. Sophia Williams</div>
+            <div class="member-role">Head of Therapist Relations</div>
+            <p>Former university professor dedicated to elevating the psychology profession.</p>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="/api/placeholder/250/250" alt="Team member" />
+          </div>
+          <div class="member-info">
+            <div class="member-name">David Park</div>
+            <div class="member-role">Head of Community</div>
+            <p>Community building expert with a background in mental health advocacy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="community" class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Join Our Community</h2>
+        <p>Connect with like-minded individuals in our supportive mental health ecosystem</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Discussion Forums</h3>
+          <p>Share experiences and insights in our moderated topic-based forums.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Group Support</h3>
+          <p>Join therapist-led group sessions focused on specific mental health topics.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <h3>Events & Workshops</h3>
+          <p>Participate in virtual events promoting mental health awareness and education.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3>Peer Support</h3>
+          <p>Connect one-on-one with trained peer supporters for additional guidance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Latest from Our Blog</h2>
+        <p>Expert insights and research on mental health topics</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="author-details">
+              <div class="author-name">Mental Health in the Digital Age</div>
+              <div class="author-title">March 10, 2025 | Dr. Emily Chen</div>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            "Exploring how technology is reshaping mental healthcare delivery and accessibility while addressing challenges..."
+          </div>
+          <a href="#read-more" style="color: var(--primary); display: block; margin-top: 15px; text-decoration: none;">Read More →</a>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="author-details">
+              <div class="author-name">The Science of Therapeutic Matching</div>
+              <div class="author-title">March 5, 2025 | Research Team</div>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            "Our study reveals that AI-assisted therapist matching improves treatment outcomes by 35% compared to traditional methods..."
+          </div>
+          <a href="#read-more" style="color: var(--primary); display: block; margin-top: 15px; text-decoration: none;">Read More →</a>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="author-details">
+              <div class="author-name">Building Resilience: Practical Strategies</div>
+              <div class="author-title">February 28, 2025 | Dr. Sophia Williams</div>
+            </div>
+          </div>
+          <div class="testimonial-text">
+            "Five evidence-based techniques to strengthen your emotional resilience in challenging times..."
+          </div>
+          <a href="#read-more" style="color: var(--primary); display: block; margin-top: 15px; text-decoration: none;">Read More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about our platform</p>
+      </div>
+      <div class="accordion">
+        <div class="accordion-item active">
+          <div class="accordion-header">
+            How does the therapist matching work?
+            <span>+</span>
+          </div>
+          <div class="accordion-content" style="max-height: 300px;">
+            <div class="accordion-content-inner">
+              Our AI algorithm analyzes multiple factors including your specific mental health concerns, therapy goals, preferred therapeutic approaches, and communication style. It then matches you with therapists whose expertise and approach align with your needs, increasing the likelihood of successful therapy outcomes.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            Is online therapy as effective as in-person therapy?
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              Research consistently shows that online therapy can be just as effective as in-person therapy for many mental health concerns. The key advantages include greater accessibility, convenience, and comfort of connecting from your own space. Our platform ensures secure, high-quality video sessions that facilitate meaningful therapeutic relationships.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            How much does therapy cost on HEAL?
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              Therapy sessions on HEAL typically range from $60-$150 per session, depending on the therapist's experience level and specialization. We aim to make therapy more affordable than traditional in-person rates. Many therapists offer sliding scale options, and we're working to expand insurance coverage options.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <div class="accordion-header">
+            How do I qualify as a therapist on the platform?
+            <span>+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="accordion-content-inner">
+              To join HEAL as a therapist, you need to have proper licensing in your jurisdiction, professional liability insurance, and pass our verification process. We review educational background, credentials, references, and conduct interviews to ensure all therapists meet our quality standards.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Join the HEAL Community Today</h2>
+        <p>Whether you're seeking support or looking to provide care, become part of our growing community.</p>
+        <div class="cta-buttons">
+          <a href="#signup-patient" class="btn">Sign Up as a Patient</a>
+          <a href="#signup-therapist" class="btn btn-outline">Join as a Therapist</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 20px;">
+            <img src="/api/placeholder/40/40" alt="HEAL Logo" />
+            <span>HEAL</span>
+          </div>
+          <p>Revolutionizing mental health through AI-driven therapy & psychologist empowerment.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon">f</a>
+            <a href="#" class="social-icon">t</a>
+            <a href="#" class="social-icon">in</a>
+            <a href="#" class="social-icon">ig</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Platform</h3>
+          <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#team">Our Team</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Community</h3>
+          <ul class="footer-links">
+            <li><a href="#forums">Discussion Forums</a></li>
+            <li><a href="#events">Events & Workshops</a></li>
+            <li><a href="#resources">Resources</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#support-groups">Support Groups</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 HEAL - Holistic Emotional Assistance & Liberation. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple JavaScript for accordion functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const accordionItems = document.querySelectorAll('.accordion-item');
+      
+      accordionItems.forEach(item => {
+        const header = item.querySelector('.accordion-header');
+        
+        header.addEventListener('click', function() {
+          item.classList.toggle('active');
+          
+          // Close other accordion items
+          accordionItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+        });
+      });
+      
+      // Calendar date selection
+      const calendarDates = document.querySelectorAll('.calendar-date');
+      
+      calendarDates.forEach(date => {
+        date.addEventListener('click', function() {
+          calendarDates.forEach(d => d.classList.remove('active'));
+          date.classList.add('active');
+        });
+      });
+      
+      // Time slot selection
+      const timeSlots = document.querySelectorAll('.time-slot');
+      
+      timeSlots.forEach(slot => {
+        slot.addEventListener('click', function() {
+          timeSlots.forEach(s => s.classList.remove('active'));
+          slot.classList.add('active');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
